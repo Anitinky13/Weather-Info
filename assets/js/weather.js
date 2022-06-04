@@ -27,5 +27,10 @@ function getResponseWeather(cityName) {
   $.ajax({
     url: queryURL,
     method: "GET",
-  }).then(function (response) {});
+  }).then(function (response) {
+    console.log(response);
+  });
 }
+getResponseWeather("San Antonio");
+//need to store the retrieved data inside weather object
+//
