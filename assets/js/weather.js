@@ -12,25 +12,44 @@ var FiveEl = document.getElementById("five-days");
 var weatherEl = document.getElementById("Weather-Today");
 var SearchingHist = JSON.parse(localStorage.getItem("search")) || [];
 
-//my unique api-assign to a variable
-var key = "3d65e260204c2c7e3d9edd022c956cf0";
-
-function getResponseWeather(cityName) {
-  var queryURL =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-    cityName +
-    "&appid=" +
-    key;
-
-  //Clear content of today-weather
-  $("#today-weather").empty();
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-  });
+searchBtn.addEventListener("click", searchClick);
+function searchClick() {
+  var cityName = nameEl.value;
+  console.log(cityName);
 }
-getResponseWeather("San Antonio");
+
+//my unique api-assign to a variable
+
+var key = "59e7c2fec0a7dcc3a2ab7131590e50bb";
+//get request from weather api to execute a current weather app
+// function getResponseWeather(cityName) {
+//   var queryURL =
+//     "https://api.openweathermap.org/data/2.5/weather?q=" +
+//     cityName +
+//     "&appid=" +
+//     key;
+
+//   //Clear content of today-weather
+//   $("#today-weather").empty();
+//   $.ajax({
+//     url: queryURL,
+//     method: "GET",
+//   }).then(function (response) {
+//     console.log(response);
+//   });
+// }
+
+//call the input in javascript
+//take the value off of it,
+// add a event listner and use the value of the input in the api call
+
 //need to store the retrieved data inside weather object
+//uv index
+//for uv index if good show green,mild yellow, and bad red
+
+//to get 5 day forecast for "a" citty
+
+//loop through and parse to display forecast for 5 days
+//to get history from local storage
+//to clear history button
 //
