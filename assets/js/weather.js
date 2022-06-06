@@ -1,21 +1,47 @@
-var nameEl = document.getElementById("#city-name");
+var nameEl = document.querySelector("#city-name");
+var userForm = document.querySelector("#user-form");
 var searchBtn = document.getElementById("#search-Btn");
 var clearBtn = document.getElementById("#clear-Btn");
-var currentPic = document.getElementById("#current-pic");
-var temperatureEl = document.getElementById("#temperature");
-var humidEL = document.getElementById("#humidity");
-var windEl = document.getElementById("#wind-speed");
-var uvEl = document.getElementById("#UV-index");
-var historyEl = document.getElementById("#history");
-var FiveEl = document.getElementById("#five-days");
-var weatherEl = document.getElementById("#Weather-Today");
 var searchHist = JSON.parse(localStorage.getItem("searchHist")) || [];
 
 var searchBtn = function (event) {
   event.preventDefault();
   var cityName = nameEl.value.trim();
-  console.log(cityName);
+
+  if (cityName) {
+    fetchWeather(cityName);
+  } else {
+    alert("City not found!");
+  }
 };
+var fetchWeather = function (city) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=59e7c2fec0a7dcc3a2ab7131590e50bb`;
+  fetch(apiUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        displayWeather(data);
+      });
+    }
+  });
+};
+var displayWeather = function (day) {
+  console.log(day.city.coord.lon);
+  var lat = day.city.coord.lat;
+  var lon = day.city.coord.lon;
+
+  var UvEl = `https://api.openweathermap.org/data/2.5/onecall?lon=${lon}&lat=${lat}&appid=59e7c2fec0a7dcc3a2ab7131590e50bb`;
+  fetch(UvEl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data);
+        var dt =
+      });
+    }
+  });
+};
+
+userForm.addEventListener("submit", searchBtn);
+
 // var app = {
 //   init: () => {
 //     searchBtn.addEventListener("click", app.fetchWeather);
@@ -25,7 +51,7 @@ var searchBtn = function (event) {
 //     var cityName = nameEl.value;
 //     var key = "59e7c2fec0a7dcc3a2ab7131590e50bb";
 //     var url =
-//       "https://api.openweathermap.org/data/2.5/weather?q=" +
+//       "https://api.openweathermap.org/data/2.5/onecall?q=" +
 //       cityName +
 //       "&appid=" +
 //       key;
