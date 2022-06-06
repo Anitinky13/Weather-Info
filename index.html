@@ -20,20 +20,25 @@
 
 </head>
 
-<body class="row align-items-center py-2">
+<body class="row d-flex justify-content-left">
     <header class="container-hero">
         <div class="title">
             <h1>Weather Board</h1>
         </div>
     </header>
     <nav class="container">
-        <div class="row align-items-center py-2">
-            <div class="input-group col-sm">
 
-            </div>
+
+        </div>
         </div>
     </nav>
-
+    <section class="weather">
+        <div class="container">
+            <div class="forecast">
+                <!--5 days forecast-->
+            </div>
+        </div>
+    </section>
     <div class="col-12 col-md-4">
         <div class="card">
             <h3 class="card-header text-uppercase">Search By City</h3>
@@ -61,41 +66,39 @@
 
         <!--right column--results for weather -->
 
-        <div class="weather col-lg-9">
-            <div class="col-lg-11 card m-3 d-none" id="Weather-Today">
-                <div class="card-body" style="width:20vw">
-                    <h5 class="card-title p-2">Date</h5>
-                    <h2 id="citys-name" class="city-name align middle"></h2>
-                    <img src="http://openweathermap.org/img/wn/10d@4x.png" id="current-pic" alt="weather description"
-                        class="card-img-top" />
-                    <div class="card-body-row">
-                        <h3 class="card-title">Weather</h3>
-                        <p class="card-text">Temperature</p>
-                        <o class="card-text">Humidity</o>
-                        <p class="card-text">Wind Speed</p>
-                        <p class="card-text">UV Index</p>
-                    </div>
+        <div class="row d-flex justify-content-right" id="Weather-Today">
+            <div class="card-body">
+
+                <h2 id="citys-name" class="city-name align middle"></h2>
+
+                <div class="card-body-row">
+                    <h3 class="card-title">Weather:</h3>
+                    <p class="card-text">Temperature:</p>
+                    <o class="card-text">Humidity:</o>
+                    <p class="card-text">Wind Speed:</p>
+                    <p class="card-text">UV Index:</p>
                 </div>
             </div>
-
-
-
         </div>
+
+
+
+    </div>
     </div>
 
-    <div class="row d-none" id="five-days">
+    <div class="row d-flex justify-content-center" id="five-days">
         <div class="col-12">
             <h2>5-Day Weather</h2>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
-        <div class="col-md 2 forecast bg-primary text-white m-2 rounded"></div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-2 col-md-6 forecast bg-primary text-white m-2 rounded">Weather</div>
+        <div class="col-lg-2 col-md-6 forecast bg-primary text-white m-2 rounded">Weather</div>
+        <div class="col-lg-2 col-md-6 forecast bg-primary text-white m-2 rounded">Weather</div>
+        <div class="col-lg-2 col-md-6 forecast bg-primary text-white m-2 rounded">Weather</div>
+        <div class="col-lg-2 col-md-6forecast bg-primary text-white m-2 rounded">Weather</div>
+
     </div>
     </div>
 
