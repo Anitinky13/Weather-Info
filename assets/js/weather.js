@@ -1,20 +1,24 @@
+//variables.
 var nameEl = document.querySelector("#city-name");
 var userForm = document.querySelector("#user-form");
 var searchBtn = document.getElementById("#search-Btn");
-var clearBtn = document.getElementById("#clear-Btn");
-var searchHist = JSON.parse(localStorage.getItem("searchHist")) || [];
+var weatherToday = document.querySelector("#weather-today");
 
+//search button function
 var searchBtn = function (event) {
   event.preventDefault();
   var cityName = nameEl.value.trim();
-
+  //if intered correct city give the information
   if (cityName) {
     fetchWeather(cityName);
+    //if not correct city name send alert
   } else {
     alert("City not found!");
   }
 };
+//get weather function
 var fetchWeather = function (city) {
+  //api url to get the data from
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=59e7c2fec0a7dcc3a2ab7131590e50bb`;
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -24,17 +28,25 @@ var fetchWeather = function (city) {
     }
   });
 };
+//weather display function
 var displayWeather = function (day) {
   console.log(day.city.coord.lon);
   var lat = day.city.coord.lat;
   var lon = day.city.coord.lon;
-
-  var UvEl = `https://api.openweathermap.org/data/2.5/onecall?lon=${lon}&lat=${lat}&appid=59e7c2fec0a7dcc3a2ab7131590e50bb`;
+  //UV index function
+  var UvEl = `https://api.openweathermap.org/data/2.5/onecall?lon=${lon}&lat=${lat}&lang=en&units=imperial&appid=59e7c2fec0a7dcc3a2ab7131590e50bb`;
   fetch(UvEl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
-        var dt =
+        var dt = new Date(data.current.dt * 1000);
+        weatherToday.innerHtml = `<h2 class="card-title p-2">${
+          day.city.name
+        } (${dt.toDateString()})
+        <p>Temp:${data.current.temp}&deg;F</p>
+        <p>Humidity:${data.current.humidity}%</p>
+        <p>Wind Speed:${data.current.wind_speed}MPH</p>
+        <p>UV Index:<span>${data.current.uvi}</span></p>`;
       });
     }
   });
