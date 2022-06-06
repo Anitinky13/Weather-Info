@@ -3,6 +3,7 @@ var nameEl = document.querySelector("#city-name");
 var userForm = document.querySelector("#user-form");
 var searchBtn = document.getElementById("#search-Btn");
 var weatherToday = document.querySelector("#weather-today");
+var historyEl = document.querySelector("#history");
 
 //search button function
 var searchBtn = function (event) {
@@ -28,6 +29,10 @@ var fetchWeather = function (city) {
     }
   });
 };
+var display = document.getElementById("#weather-today");
+var container = document.createElement("div");
+container.setAttribute("class", "container");
+display.appendChild(container);
 //weather display function
 var displayWeather = function (day) {
   console.log(day.city.coord.lon);
@@ -91,37 +96,35 @@ userForm.addEventListener("submit", searchBtn);
 //   },
 // };
 
-// app.init();
+// // //get request from weather api to execute a current weather app
+// // function getResponseWeather(cityName) {
+// //   var queryURL =
+// //     "https://api.openweathermap.org/data/2.5/weather?q=" +
+// //     cityName +
+// //     "&appid=" +
+// //     key;
 
-// //get request from weather api to execute a current weather app
-// function getResponseWeather(cityName) {
-//   var queryURL =
-//     "https://api.openweathermap.org/data/2.5/weather?q=" +
-//     cityName +
-//     "&appid=" +
-//     key;
+// //   //Clear content of today-weather
+// //   $("#today-weather").empty();
+// //   $.ajax({
+// //     url: queryURL,
+// //     method: "GET",
+// //   }).then(function (response) {
+// //     console.log(response);
+// //   });
+// // }
 
-//   //Clear content of today-weather
-//   $("#today-weather").empty();
-//   $.ajax({
-//     url: queryURL,
-//     method: "GET",
-//   }).then(function (response) {
-//     console.log(response);
-//   });
-// }
+// // //call the input in javascript
+// // //take the value off of it,
+// // // add a event listner and use the value of the input in the api call
 
-// //call the input in javascript
-// //take the value off of it,
-// // add a event listner and use the value of the input in the api call
+// // //need to store the retrieved data inside weather object
+// // //uv index
+// // //for uv index if good show green,mild yellow, and bad red
 
-// //need to store the retrieved data inside weather object
-// //uv index
-// //for uv index if good show green,mild yellow, and bad red
+// // //to get 5 day forecast for "a" citty
 
-// //to get 5 day forecast for "a" citty
-
-// //loop through and parse to display forecast for 5 days
-// //to get history from local storage
-// //to clear history button
-// //
+// // //loop through and parse to display forecast for 5 days
+// // //to get history from local storage
+// // //to clear history button
+// // //
