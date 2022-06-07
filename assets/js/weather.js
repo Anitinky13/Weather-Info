@@ -49,6 +49,10 @@ var displayWeather = function (day) {
         weatherToday.innerHTML = `<h2 class="card-title p-2">${
           day.city.name
         } (${dt.toDateString()})
+        <img 
+        src="http://openweathermap.org/img/wn/$%7Bdata.current.weather[0].icon%7D.png" alt="${
+          data.current.weather[0].description
+        }"/>
         <p>Temp:${data.current.temp}&deg;F</p>
         <p>Humidity:${data.current.humidity}%</p>
         <p>Wind Speed:${data.current.wind_speed}MPH</p>
@@ -60,13 +64,20 @@ var displayWeather = function (day) {
             if (idx > 0 && idx < 6) {
               var dt = new Date(day.dt * 1000);
               console.log(dt);
+              return `<div class="card">
+              <p>date:(${dt.toDateString()})</p>
+              <p><img 
+              src="http://openweathermap.org/img/wn/$%7Bdata.current.weather[0].icon%7D.png" alt="${
+                data.current.weather[0].description
+              }"/>
+              </p>
+              <p>Temp:${data.current.temp}&deg;F</p>
+              <p>Humidity:${data.current.humidity}%</p>
+              <p>Wind speed:${data.current.wind_speed}MPH</p>
 
-              //   return `<div class ="row">
-              //   <p>${data.dt.toDateString()}</p>
-              //   <p>Temp:${day.temp.max}</p>
-              //   <p>Wind:${day.wind_speed}</p>
-              //   <p>Humidity:${day.humidity}</p>
-              //   </div>`;
+          </div>`;
+
+              // Generate and append html elements on the page
             }
           });
       });

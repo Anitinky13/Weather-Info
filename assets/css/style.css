@@ -1,0 +1,36 @@
+.container-hero {
+  background-color: aqua;
+  border: 2px;
+  border-style: dashed;
+}
+.card {
+  background-color: beige;
+  padding: 5px;
+  margin: 10px;
+}
+.card h3 {
+  border: 2px;
+  margin: 10px;
+  padding: 3px;
+  background-color: azure;
+}
+.card-body {
+  border: 2px;
+  background-color: aqua;
+}
+.form-input {
+  padding: 10px;
+  margin: 10px;
+}
+.btn {
+  padding: 10px;
+  margin: 10px;
+}
+.form-label {
+  font-size: 20pt;
+}
+p {
+  border: 2px;
+  margin: 5px;
+  padding: 3px;
+}
