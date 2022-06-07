@@ -1,9 +1,9 @@
 //variables.
-var nameEl = document.querySelector("#city-name");
-var userForm = document.querySelector("#user-form");
+var nameEl = document.getElementById("#city-name");
+var userForm = document.getElementById("#user-form");
 var searchBtn = document.getElementById("#search-Btn");
-var weatherToday = document.querySelector("#weather-today");
-var historyEl = document.querySelector("#history");
+var weatherToday = document.getElementById("weather-today");
+var historyEl = document.getElementById("history");
 
 //search button function
 var searchBtn = function (event) {
@@ -29,7 +29,7 @@ var fetchWeather = function (city) {
     }
   });
 };
-var display = document.getElementById("#weather-today");
+var display = document.getElementById("weather-today");
 var container = document.createElement("div");
 container.setAttribute("class", "container");
 display.appendChild(container);
