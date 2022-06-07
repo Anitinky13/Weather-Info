@@ -1,9 +1,9 @@
 //variables.
-var nameEl = document.getElementById("#city-name");
-var userForm = document.getElementById("#user-form");
-var searchBtn = document.getElementById("#search-Btn");
+var nameEl = document.querySelector("#city-name");
+var userForm = document.querySelector("#user-form");
+var searchBtn = document.querySelector("#search-Btn");
 var weatherToday = document.getElementById("weather-today");
-var historyEl = document.getElementById("history");
+var fiveDays = document.getElementById("five-days");
 
 //search button function
 var searchBtn = function (event) {
@@ -35,7 +35,7 @@ container.setAttribute("class", "container");
 display.appendChild(container);
 //weather display function
 var displayWeather = function (day) {
-  console.log(day.city.coord.lon);
+  console.log(day);
   var lat = day.city.coord.lat;
   var lon = day.city.coord.lon;
   //UV index function
@@ -44,87 +44,37 @@ var displayWeather = function (day) {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
+        console.log(day);
         var dt = new Date(data.current.dt * 1000);
-        weatherToday.innerHtml = `<h2 class="card-title p-2">${
+        weatherToday.innerHTML = `<h2 class="card-title p-2">${
           day.city.name
         } (${dt.toDateString()})
         <p>Temp:${data.current.temp}&deg;F</p>
         <p>Humidity:${data.current.humidity}%</p>
         <p>Wind Speed:${data.current.wind_speed}MPH</p>
         <p>UV Index:<span>${data.current.uvi}</span></p>`;
+        //look how to get weekly report
+        fiveDays.innerHTML =
+          `<h2>5-Day Weather</h2>` +
+          data.daily.map((day, idx) => {
+            if (idx > 0 && idx < 6) {
+              var dt = new Date(day.dt * 1000);
+              console.log(dt);
+
+              //   return `<div class ="row">
+              //   <p>${data.dt.toDateString()}</p>
+              //   <p>Temp:${day.temp.max}</p>
+              //   <p>Wind:${day.wind_speed}</p>
+              //   <p>Humidity:${day.humidity}</p>
+              //   </div>`;
+            }
+          });
       });
     }
   });
 };
+//create an array of the days
+//create for loop for the array
+//for each item of array print object
 
 userForm.addEventListener("submit", searchBtn);
-
-// var app = {
-//   init: () => {
-//     searchBtn.addEventListener("click", app.fetchWeather);
-//   },
-//   fetchWeather: (cityName) => {
-//     //my unique api-assign to a variable
-//     var cityName = nameEl.value;
-//     var key = "59e7c2fec0a7dcc3a2ab7131590e50bb";
-//     var url =
-//       "https://api.openweathermap.org/data/2.5/onecall?q=" +
-//       cityName +
-//       "&appid=" +
-//       key;
-
-//     //fetch the url
-//     fetch(url)
-//       .then((response) => {
-//         if (!response.ok) new Error(response.statusText);
-//         return response.json();
-//       })
-//       .then((data) => {
-//         app.showWeather(data);
-//       })
-//       .catch(console.error);
-//   },
-//   showWeather: (response) => {
-//     console.log(response);
-//     var row = document.querySelector(".weather.row");
-//     row.innerHTML = response.daily.map((day, idx) => {
-//       if (idx <= 2) {
-//         var dt = new Date(day.dt * 1000);
-//         return ``;
-//       }
-//     });
-//   },
-// };
-
-// // //get request from weather api to execute a current weather app
-// // function getResponseWeather(cityName) {
-// //   var queryURL =
-// //     "https://api.openweathermap.org/data/2.5/weather?q=" +
-// //     cityName +
-// //     "&appid=" +
-// //     key;
-
-// //   //Clear content of today-weather
-// //   $("#today-weather").empty();
-// //   $.ajax({
-// //     url: queryURL,
-// //     method: "GET",
-// //   }).then(function (response) {
-// //     console.log(response);
-// //   });
-// // }
-
-// // //call the input in javascript
-// // //take the value off of it,
-// // // add a event listner and use the value of the input in the api call
-
-// // //need to store the retrieved data inside weather object
-// // //uv index
-// // //for uv index if good show green,mild yellow, and bad red
-
-// // //to get 5 day forecast for "a" citty
-
-// // //loop through and parse to display forecast for 5 days
-// // //to get history from local storage
-// // //to clear history button
-// // //
